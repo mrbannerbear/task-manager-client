@@ -21,9 +21,8 @@ const Navbar = () => {
                 {
                     navItems.map(
                         each => (
-                            <NavLink key={each.id}
-                            className={`hover:text-blue-600`}>
-                                <button>
+                            <NavLink key={each.id}>
+                                <button className="hover:text-blue-600">
                                     {each.name}
                                 </button>
                             </NavLink>
@@ -39,9 +38,9 @@ const Navbar = () => {
           {
                     navItems.map(
                         each => (
-                            <NavLink key={each.id}
-                            className={`hover:text-blue-200`}>
-                                <button>
+                            <NavLink key={each.id}>
+                                <button className="hover:text-blue-600 hover:bg-blue-200 px-3 py-2 transition-all 
+                                rounded-sm active:scale-95">
                                     {each.name}
                                 </button>
                             </NavLink>
