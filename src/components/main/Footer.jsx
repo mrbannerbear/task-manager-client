@@ -9,17 +9,17 @@ const Footer = () => {
           <div className="grid grid-flow-col gap-4">
             <span>
                 <a target="_blank" href="https://facebook.com/" className="text-2xl hover:text-blue-600" rel="noreferrer">
-                    <FaFacebook></FaFacebook>
+                    <FaFacebook className="text-2xl"></FaFacebook>
                 </a>
             </span>
             <span>
                 <a target="_blank" href="https://instagram.com/" className="text-2xl hover:text-pink-600" rel="noreferrer">
-                    <FaInstagram></FaInstagram>
+                    <FaInstagram className="text-2xl"></FaInstagram>
                 </a>
             </span>
             <span>
                 <a target="_blank" href="https://twitter.com/" className="text-2xl hover:text-black" rel="noreferrer">
-                    <FaXTwitter></FaXTwitter>
+                    <FaXTwitter className="text-2xl"></FaXTwitter>
                 </a>
             </span>
           </div>

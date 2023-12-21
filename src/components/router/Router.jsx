@@ -5,6 +5,7 @@ import Signup from "../auth/Signup";
 import Login from "../auth/Login";
 import Tasks from "../tasks/Tasks";
 import YourTasks from "../tasks/taskComps/yourTasks/YourTasks";
+import Partners from "../partners/Partners";
 
 const router = new createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = new createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/partners",
+        element: <Partners></Partners>
       },
       {
         path: "/tasks",
