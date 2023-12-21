@@ -11,7 +11,7 @@ const Navbar = () => {
     ]
 
     return (
-        <div className="navbar bg-base-100 px-3 md:px-6 lg:px-12">
+        <div className="navbar bg-transparent px-3 md:px-6 lg:px-12 sticky top-0">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -22,7 +22,8 @@ const Navbar = () => {
                     navItems.map(
                         each => (
                             <NavLink key={each.id}>
-                                <button className="hover:text-blue-600">
+                                       <button className="px-3 py-2 transition-all 
+                                rounded-sm active:scale-95">
                                     {each.name}
                                 </button>
                             </NavLink>
@@ -31,7 +32,7 @@ const Navbar = () => {
                 }
             </ul>
           </div>
-          <a className="text-2xl text-blue-400 font-semibold">Project<span className="text-blue-600 text-poppins">Pilot</span></a>
+          <a className="text-2xl text-blue-400 font-semibold">Project<span className="text-blue-600 text-poppins text-2xl">Pilot</span></a>
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -39,7 +40,8 @@ const Navbar = () => {
                     navItems.map(
                         each => (
                             <NavLink key={each.id}>
-                                <button className="hover:text-blue-600 hover:bg-blue-200 px-3 py-2 transition-all 
+                            <button className="px-3 py-2 transition-all 
+                                    hover:bg-blue-200 
                                 rounded-sm active:scale-95">
                                     {each.name}
                                 </button>

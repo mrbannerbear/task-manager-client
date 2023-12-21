@@ -6,19 +6,19 @@ const Footer = () => {
         <footer className="footer footer-center p-10 bg-blue-100 text-base-content rounded">
         <nav>
             Join Us On:
-          <div className="grid grid-flow-col gap-4 text-2xl">
+          <div className="grid grid-flow-col gap-4">
             <span>
-                <a target="_blank" href="https://facebook.com/" className="hover:text-blue-600" rel="noreferrer">
+                <a target="_blank" href="https://facebook.com/" className="text-2xl hover:text-blue-600" rel="noreferrer">
                     <FaFacebook></FaFacebook>
                 </a>
             </span>
             <span>
-                <a target="_blank" href="https://instagram.com/" className="hover:text-pink-600" rel="noreferrer">
+                <a target="_blank" href="https://instagram.com/" className="text-2xl hover:text-pink-600" rel="noreferrer">
                     <FaInstagram></FaInstagram>
                 </a>
             </span>
             <span>
-                <a target="_blank" href="https://twitter.com/" className="hover:text-black" rel="noreferrer">
+                <a target="_blank" href="https://twitter.com/" className="text-2xl hover:text-black" rel="noreferrer">
                     <FaXTwitter></FaXTwitter>
                 </a>
             </span>
