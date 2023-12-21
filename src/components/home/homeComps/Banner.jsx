@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 /* eslint-disable react/no-unescaped-entities */
 const Banner = () => {
   return (
@@ -12,7 +14,11 @@ const Banner = () => {
             Elevate Your Productivity and Serenity with ProjectPilot - Your
             Essential Task Manager and To-Do List Companion.
           </p>
-          <button className="px-3 py-2 bg-blue-200 rounded-sm border border-blue-200">Let's Explore</button>
+          <NavLink to={`/projects`}>
+            <button className="px-3 py-2 bg-blue-200 rounded-sm border border-blue-200">
+                Let's Explore
+            </button>
+          </NavLink>
         </div>
       </div>
     </div>
