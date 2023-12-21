@@ -3,26 +3,38 @@ import MainELement from "../main/MainELement";
 import Home from "../home/Home";
 import Signup from "../auth/Signup";
 import Login from "../auth/Login";
+import Tasks from "../tasks/Tasks";
+import YourTasks from "../tasks/taskComps/yourTasks/YourTasks";
 
 const router = new createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <MainELement></MainELement>,
+    children: [
+      {
         path: "/",
-        element: <MainELement></MainELement>,
+        element: <Home></Home>,
+      },
+      {
+        path: "/tasks",
+        element: <Tasks></Tasks>,
         children: [
             {
-                path: "/",
-                element: <Home></Home>
+                path: "/tasks",
+                element: <YourTasks></YourTasks>
             }
         ]
-    },
-    {
-        path: "/signup",
-        element: <Signup></Signup>
-    },
-    {
-        path: "/login",
-        element: <Login></Login>
-    }
-])
+      }
+    ],
+  },
+  {
+    path: "/signup",
+    element: <Signup></Signup>,
+  },
+  {
+    path: "/login",
+    element: <Login></Login>,
+  },
+]);
 
-export default router
+export default router;

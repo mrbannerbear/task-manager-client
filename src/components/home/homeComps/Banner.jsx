@@ -14,7 +14,7 @@ const Banner = () => {
             Elevate Your Productivity and Serenity with ProjectPilot - Your
             Essential Task Manager and To-Do List Companion.
           </p>
-          <NavLink to={`/projects`}>
+          <NavLink to={`/tasks`}>
             <button className="px-3 py-2 bg-blue-200 rounded-sm border border-blue-200">
                 Let's Explore
             </button>

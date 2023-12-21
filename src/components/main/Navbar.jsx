@@ -8,8 +8,8 @@ const Navbar = () => {
   const navItems = [
     {
       id: 1,
-      name: "Projects",
-      path: "/projects",
+      name: "Tasks",
+      path: "/tasks",
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ const Navbar = () => {
       ? {
           id: 3,
           element: (
-            <button
+            <button className="lg:py-2 lg:px-3 rounded-sm hover:bg-blue-200"
               onClick={() => {
                 logout();
               }}
@@ -72,10 +72,12 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        <a className="text-2xl text-blue-400 font-semibold">
+        <NavLink to={`/`}>
+        <span className="text-2xl text-blue-400 font-semibold hover:cursor-pointer">
           Project
           <span className="text-blue-600 text-poppins text-2xl">Pilot</span>
-        </a>
+        </span>
+        </NavLink>
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-5">

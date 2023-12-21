@@ -8,7 +8,7 @@ const MainELement = () => {
       <div
         className="absolute w-full h-max bg-center bg-cover bg-fixed"
         style={{
-          backgroundImage: "url(/public/pngegg.png)",
+          backgroundImage: "url(/pngegg.png)",
         }}
       >
         <Navbar></Navbar>
