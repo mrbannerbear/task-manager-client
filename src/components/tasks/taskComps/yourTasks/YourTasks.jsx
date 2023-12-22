@@ -1,12 +1,20 @@
 import { useState } from "react";
 import Ongoing from "./Ongoing";
+import ToDo from "./ToDo";
+import useTasks from "../../../../custom/useTasks";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import Completed from "./Completed";
 
 const YourTasks = () => {
 
+    const {tasks, refetch} = useTasks()
+
+    console.log(tasks)
+
     const [checkedState, setCheckedState] = useState({
-        1: false,
-        2: false,
-        3: false
+        1: true,
+        2: true,
+        3: true
     })
 
     const handleToggle = (id) => {
@@ -20,17 +28,17 @@ const YourTasks = () => {
         {
             id:1,
             name: "To-Do",
-            element: <>hello</>
+            element: <ToDo tasks={tasks} refetch={refetch}></ToDo>
         },
         {
             id: 2,
             name: "Ongoing",
-            element: <Ongoing></Ongoing>
+            element: <Ongoing tasks={tasks} refetch={refetch}></Ongoing>
         },
         {
             id: 3,
             name: "Completed",
-            element: <>Hello</>
+            element: <Completed  tasks={tasks} refetch={refetch}></Completed>
         }
     ]
 
@@ -40,17 +48,17 @@ const YourTasks = () => {
             taskTypes.map(
                 each => (
 
-                    <div key={each.id} className="bg-base-100 rounded-none border-b-2 border-red-300">
+                    <div key={each.id} className="bg-base-100 rounded-none border-b-2 p-4">
                     
                     <div className=" text-xl font-medium flex justify-between">
                       <span>
                       {each.name}
                       </span>
                       <button onClick={() => handleToggle(each.id)}>
-                        i
+                      { checkedState[each.id] ? <IoIosArrowUp></IoIosArrowUp> : <IoIosArrowDown></IoIosArrowDown>}
                       </button>
                     </div>
-                   {checkedState[each.id] && <div className="">
+                   {checkedState[each.id] && <div className="py-2">
                         {each.element}
                     </div>}
                   </div>

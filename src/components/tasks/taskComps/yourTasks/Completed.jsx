@@ -4,7 +4,7 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
-const Ongoing = ({ tasks, refetch }) => {
+const Completed = ({ tasks, refetch }) => {
     console.log(tasks)
 
     const navigate = useNavigate()
@@ -12,7 +12,7 @@ const Ongoing = ({ tasks, refetch }) => {
   return (
     <div>
       {tasks
-        .filter((each) => each?.status == "Ongoing")
+        .filter((each) => each?.status == "Completed")
         .map((each) => (
           <p
             key={each?.title}
@@ -56,4 +56,4 @@ const Ongoing = ({ tasks, refetch }) => {
   );
 };
 
-export default Ongoing;
+export default Completed;

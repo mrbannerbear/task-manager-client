@@ -1,24 +1,32 @@
+import { NavLink } from "react-router-dom";
+
 const TaskNav = () => {
-    return (
-        <div className="navbar bg-base-100 lg:hidden rounded-sm mb-5">
-        <div className="flex justify-center w-full">
-          <ul className="menu menu-horizontal px-1">
-            <li><a>Link</a></li>
-            <li>
-              <details>
-                <summary>
-                  Parent
-                </summary>
-                <ul className="p-2 bg-base-100 rounded-t-none">
-                  <li><a>Link 1</a></li>
-                  <li><a>Link 2</a></li>
-                </ul>
-              </details>
-            </li>
-          </ul>
-        </div>
+  const sideComps = [
+    {
+      id: 1,
+      name: "Your Tasks",
+      path: "/tasks",
+    },
+    {
+      id: 2,
+      name: "Add Task",
+      path: "/add-task",
+    },
+  ];
+
+  return (
+    <div className="navbar bg-base-100 lg:hidden rounded-sm mb-5">
+      <div className="flex justify-center w-full">
+        <ul className="menu menu-horizontal px-1 gap-5">
+          {sideComps.map((each) => (
+            <NavLink key={each.id} to={each?.path}>
+              <li> {each.name} </li>
+            </NavLink>
+          ))}
+        </ul>
       </div>
-    );
+    </div>
+  );
 };
 
 export default TaskNav;

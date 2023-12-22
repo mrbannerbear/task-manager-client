@@ -4,6 +4,7 @@ import TaskNav from "./taskComps/TaskNav";
 
 
 const Tasks = () => {
+
     return (
         <div className="p-3 lg:p-6 min-h-screen">
             <TaskNav></TaskNav>

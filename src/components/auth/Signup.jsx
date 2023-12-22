@@ -10,7 +10,7 @@ import auth from "../../../firebase/firebase.config";
 
 const Signup = () => {
     const { signup, googleAuth, facebookAuth } = useContext(AuthProvider);
-  const { register, handleSubmit } = useForm();
+    const { register, handleSubmit } = useForm();
   const [ error, setError ] = useState(null)
   const navigate = useNavigate();
   const location = useLocation();

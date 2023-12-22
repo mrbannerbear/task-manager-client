@@ -4,15 +4,14 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
-const Ongoing = ({ tasks, refetch }) => {
-    console.log(tasks)
+const ToDo = ({ tasks, refetch }) => {
 
     const navigate = useNavigate()
 
   return (
     <div>
       {tasks
-        .filter((each) => each?.status == "Ongoing")
+        .filter((each) => each?.status == "To-do")
         .map((each) => (
           <p
             key={each?.title}
@@ -56,4 +55,4 @@ const Ongoing = ({ tasks, refetch }) => {
   );
 };
 
-export default Ongoing;
+export default ToDo;
