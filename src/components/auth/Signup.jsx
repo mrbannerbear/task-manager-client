@@ -9,34 +9,37 @@ import { updateProfile } from "firebase/auth";
 import auth from "../../../firebase/firebase.config";
 
 const Signup = () => {
-    const { signup, googleAuth, facebookAuth } = useContext(AuthProvider);
-    const { register, handleSubmit } = useForm();
-  const [ error, setError ] = useState(null)
+  const { signup, googleAuth, facebookAuth } = useContext(AuthProvider);
+  const { register, handleSubmit } = useForm();
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleForm = (d) => {
-
     signup(d.email, d.password)
       .then((res) => {
         console.log(res);
         updateProfile(auth.currentUser, {
-            displayName: d.name,
-          })
-          .then(() => {toast("Signed up successfully")
-          navigate(location?.state ? location?.state : "/")
+          displayName: d.name,
+          photoURL: d.image
         })
-          .catch(err => console.log(err));
+          .then(() => {
+            toast("Signed up successfully");
+            navigate(location?.state ? location?.state : "/");
+          })
+          .catch((err) => console.log(err));
       })
-      .catch((err) => {console.log(err);
-    setError("Incorrect email or password.")});
+      .catch((err) => {
+        console.log(err);
+        setError("Incorrect email or password.");
+      });
   };
 
   const HandleGoogleAuth = () => {
     googleAuth()
       .then((data) => {
         console.log(data);
-          toast("Log in successful");
+        toast("Log in successful");
         setError(null);
         navigate(location?.state ? location.state : "/");
       })
@@ -50,7 +53,7 @@ const Signup = () => {
     facebookAuth()
       .then((data) => {
         console.log(data);
-          toast("Log in successful");
+        toast("Log in successful");
         setError(null);
         navigate(location?.state ? location.state : "/");
       })
@@ -62,111 +65,129 @@ const Signup = () => {
 
   return (
     <div className="bg-blue-50/50 py-12">
-    <div className="w-3/4 lg:w-1/3 mx-auto pt-6">
+      <div className="w-3/4 lg:w-1/3 mx-auto pt-6">
         <NavLink to={`/`}>
-            <span>
+          <span>
             <FaHome className="text-2xl"></FaHome>
-            </span>
+          </span>
         </NavLink>
-    </div>
-    <div
-      className=" min-h-screen flex flex-col justify-center items-center">
+      </div>
+      <div className=" min-h-screen flex flex-col justify-center items-center">
         <div className="text-center mb-4">
-            <h2 className="text-3xl font-semibold">Sign Up</h2>
+          <h2 className="text-3xl font-semibold">Sign Up</h2>
         </div>
-
 
         <p className="w-3/4 lg:w-1/3 mx-auto justify-center flex flex-col items-center">
-                  <button
-                    className="text-sm flex border-[1.5px] items-center justify-center gap-2 border-blue-500/30
+          <button
+            className="text-sm flex border-[1.5px] items-center justify-center gap-2 border-blue-500/30
                     rounded-sm
               w-full
               py-2"
-                    onClick={HandleGoogleAuth}
-                  >
-                    <FaGoogle></FaGoogle> Sign Up with Google
-                  </button>
-                  <button
-                    className="text-sm flex my-3 border-[1.5px] items-center justify-center gap-2 border-blue-500/30
+            onClick={HandleGoogleAuth}
+          >
+            <FaGoogle></FaGoogle> Sign Up with Google
+          </button>
+          <button
+            className="text-sm flex my-3 border-[1.5px] items-center justify-center gap-2 border-blue-500/30
                     rounded-sm
               w-full
               py-2"
-                    onClick={HandleFacebookAuth}
-                  >
-                    <FaFacebook></FaFacebook> Login with Facebook
-                  </button>
-                </p>
-                <span className="my-5"> Or</span>
-
-
-      <form className="w-3/4 lg:w-1/3 mx-auto"
-            onSubmit={handleSubmit(handleForm)}>
-                   <div className="relative z-0 w-full mb-6 group">
-          <input
-            {...register("name")}
-            type="text"
-            name="name"
-            id="name"
-            className="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b border-[#607244] appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#607244] peer"
-            placeholder=" "
-            required
-          />
-          <label
-            htmlFor="name"
-            className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            onClick={HandleFacebookAuth}
           >
-            Username
-          </label>
-        </div>
-        <div className="relative z-0 w-full mb-6 group">
-          <input
-            {...register("email")}
-            type="email"
-            name="email"
-            id="email"
-            className="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b border-[#607244] appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#607244] peer"
-            placeholder=" "
-            required
-          />
-          <label
-            htmlFor="email"
-            className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >
-            Email address
-          </label>
-        </div>
-        <div className="relative z-0 w-full mb-6 group">
-          <input
-            {...register("password")}
-            type="password"
-            name="password"
-            id="password"
-            className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b border-[#607244] appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#607244] peer"
-            placeholder=" "
-            required
-          />
-          <label
-            htmlFor="password"
-            className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4  peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >
-            Password
-          </label>
-        </div>
-        <button
-          type="submit"
-          className="btn1"
-        >
-          Submit
-        </button>
-        <p className="mt-4 text-sm text-red-400">
-            {error}
+            <FaFacebook></FaFacebook> Login with Facebook
+          </button>
         </p>
-      </form>
-      <div className="w-3/4 lg:w-1/3 mx-auto mt-6 text-sm text-center">
-            Already have an account? <span className="underline"> <NavLink to={`/login`}>Login</NavLink></span> here
+        <span className="my-5"> Or</span>
+
+        <form
+          className="w-3/4 lg:w-1/3 mx-auto"
+          onSubmit={handleSubmit(handleForm)}
+        >
+          <div className="relative z-0 w-full mb-6 group">
+            <input
+              {...register("name")}
+              type="text"
+              name="name"
+              id="name"
+              className="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b border-[#607244] appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#607244] peer"
+              placeholder=" "
+              required
+            />
+            <label
+              htmlFor="name"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Username
+            </label>
+          </div>
+
+          <div className="relative z-0 w-full mb-6 group">
+            <input
+              {...register("image")}
+              type="text"
+              name="image"
+              id="image"
+              className="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b border-[#607244] appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#607244] peer"
+              placeholder=" "
+            />
+            <label
+              htmlFor="image"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Image URL (optional)
+            </label>
+          </div>
+        
+  
+          <div className="relative z-0 w-full mb-6 group">
+            <input
+              {...register("email")}
+              type="email"
+              name="email"
+              id="email"
+              className="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b border-[#607244] appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#607244] peer"
+              placeholder=" "
+              required
+            />
+            <label
+              htmlFor="email"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Email address
+            </label>
+          </div>
+          <div className="relative z-0 w-full mb-6 group">
+            <input
+              {...register("password")}
+              type="password"
+              name="password"
+              id="password"
+              className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b border-[#607244] appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#607244] peer"
+              placeholder=" "
+              required
+            />
+            <label
+              htmlFor="password"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4  peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Password
+            </label>
+          </div>
+          <button type="submit" className="btn1">
+            Submit
+          </button>
+          <p className="mt-4 text-sm text-red-400">{error}</p>
+        </form>
+        <div className="w-3/4 lg:w-1/3 mx-auto mt-6 text-sm text-center">
+          Already have an account?{" "}
+          <span className="underline">
+            {" "}
+            <NavLink to={`/login`}>Login</NavLink>
+          </span>{" "}
+          here
+        </div>
+        <Toaster></Toaster>
       </div>
-      <Toaster></Toaster>
-    </div>
     </div>
   );
 };

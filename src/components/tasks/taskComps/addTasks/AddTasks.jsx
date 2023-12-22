@@ -1,12 +1,16 @@
 import axios from "axios";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
+import { AuthProvider } from "../../../../context/AuthContext";
 
 const AddTasks = () => {
   const { register, handleSubmit } = useForm();
+  const {user} = useContext(AuthProvider)
 
   const handleForm = (d) => {
-    d.status = "To-do"
+    d.status = "To-do",
+    d.email = user?.email
     axios
       .post("http://localhost:3150/tasks", d)
       .then((res) => {

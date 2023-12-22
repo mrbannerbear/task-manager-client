@@ -1,12 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useContext } from "react";
+import { AuthProvider } from "../context/AuthContext";
 
 const useTasks = () => {
+
+  const {user} = useContext(AuthProvider)
 
   const {
     isLoading,
     error,
-    data: tasks = [],
+    data: Tasks = [],
     refetch,
   } = useQuery({
     queryKey: ["tasks"],
@@ -15,6 +19,8 @@ const useTasks = () => {
       return response.data;
     },
   });
+
+  const tasks = Tasks.filter(each => each?.email == user?.email)
 
   return {isLoading, error, tasks, refetch};
 };
