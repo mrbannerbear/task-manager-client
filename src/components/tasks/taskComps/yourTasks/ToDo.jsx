@@ -39,7 +39,7 @@ const ToDo = ({ tasks, refetch }) => {
                     <FaEdit className="text-xs"></FaEdit>
                 </button>
                 <button onClick={() => {
-                    axios.delete(`http://localhost:3150/tasks/${each?._id}`)
+                    axios.delete(`https://project-pilot-server.vercel.app/tasks/${each?._id}`)
                     .then(() => {
                         toast("Task deleted");
                         refetch()})

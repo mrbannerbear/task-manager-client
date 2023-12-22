@@ -14,7 +14,7 @@ const EditTasks = () => {
 
   const handleForm = (d) => {
     axios
-      .patch(`http://localhost:3150/tasks/${target?._id}`, d)
+      .patch(`https://project-pilot-server.vercel.app/tasks/${target?._id}`, d)
       .then((res) => {
         console.log(res);
         toast("Task updated")

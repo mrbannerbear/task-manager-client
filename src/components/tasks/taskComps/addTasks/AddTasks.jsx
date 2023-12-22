@@ -12,7 +12,7 @@ const AddTasks = () => {
     d.status = "To-do",
     d.email = user?.email
     axios
-      .post("http://localhost:3150/tasks", d)
+      .post("https://project-pilot-server.vercel.app/tasks", d)
       .then((res) => {
         console.log(res);
         toast("Task added successfully")

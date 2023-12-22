@@ -15,7 +15,7 @@ const useTasks = () => {
   } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
-      const response = await axios.get(`http://localhost:3150/tasks`);
+      const response = await axios.get(`https://project-pilot-server.vercel.app/tasks`);
       return response.data;
     },
   });
