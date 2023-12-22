@@ -27,11 +27,11 @@ const Home = () => {
         <p className="text-3xl">Trusted By:</p>
 
         <div className="flex justify-center items-center flex-wrap gap-3 lg:gap-5 my-4">
-            <img className="w-20" src="/public/google-logo.png" alt="" />
-            <img className="w-20" src="/public/lakers-logo.png" alt="" />
-            <img className="w-20" src="/public/microsoft-logo.png" alt="" />
-            <img className="w-24" src="/public/aston-martin-logo.png" alt="" />
-            <img className="w-16" src="/public/al-jazeera-logo.png" alt="" />
+            <img className="w-20" src="/google-logo.png" alt="" />
+            <img className="w-20" src="/lakers-logo.png" alt="" />
+            <img className="w-20" src="/microsoft-logo.png" alt="" />
+            <img className="w-24" src="/aston-martin-logo.png" alt="" />
+            <img className="w-16" src="/al-jazeera-logo.png" alt="" />
         </div>
         <p>...and more!</p>
     </div>
